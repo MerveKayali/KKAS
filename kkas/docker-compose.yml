@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: kkas-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: kkasdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - kkas-network
+
+volumes:
+  postgres-data:
+
+networks:
+  kkas-network:
